@@ -76,8 +76,8 @@ v<-sotuCorpus%>%
   TermDocumentMatrix()%>%
   as.matrix()%>%rowSums%>%sort(decreasing=TRUE)
 
-#d<-data.frame(word = names(v),freq=v)
-#wordcloud(words=d$word,freq=d$freq,max.words=500,random.order=FALSE,min.freq=1,
+d<-data.frame(word = names(v),freq=v)
+wordcloud(words=d$word,freq=d$freq,max.words=500,random.order=FALSE,min.freq=1,
           #colors=brewer.pal(8,"Dark2"))
 
 ```
