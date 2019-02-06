@@ -13,7 +13,8 @@ library(tm)
 library(SnowballC)
 library(wordcloud)
 library(rvest)
-library(wordcloud)
+library(RColorBrewer)
+
 ```
 
 ```{r retrieve-SOTU-transcript}
@@ -47,18 +48,6 @@ test<-page%>%html_nodes(xpath=paste0(
 
 ```
 
-```{r}
-rquery.wordcloud(sotu,type="text",
-                 lang="english",
-                 excludeWords=c("and","the","this","these","or"),
-                 textStemming=FALSE,
-                 colorPalette="Dark2",
-                 max.words=200)
-
-
-```
-?rquery
-
 
 ```{r process-into-corpus}
 sotuCorpus<-Corpus(VectorSource(sotu))
@@ -80,7 +69,7 @@ v<-sotuCorpus%>%
 
 d<-data.frame(word = names(v),freq=v)
 wordcloud(words=d$word,freq=d$freq,max.words=500,random.order=FALSE,min.freq=1,
-          #colors=brewer.pal(8,"Dark2"))
+          colors=brewer.pal(8,"Dark2"))
 
 ```
 
